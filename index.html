@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="EXPIRES" CONTENT="0">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>開啟「全民健保行動快易通」App</title>
+  </head>
+  <body>
+    <p style="font-size: 48px; text-align: center; margin: 30px auto;">頁面跳轉中，請稍候…</p>
+    <button onClick="liff.closeWindow();" style="background-color: #555555; border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; margin:auto; display: block; font-size: 72px;">關閉視窗</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+    <script>
+      $(document).ready(function() {
+        liff.init({
+          liffId: "__LIFF_ID__"
+        })
+        .then(() => {
+          if (liff.isInClient()) {
+            if (liff.getOS() == "ios") {
+              window.location.replace("itms://itunes.apple.com/app/apple-store/id578186283?mt=8");              
+            } else if (liff.getOS() == "android") {
+              window.location.replace("market://details?id=com.nhiApp.v1");
+            }
+
+            setTimeout(function(){ liff.closeWindow(); }, 3000);
+          }
+        })
+        .catch((err) => {
+        });
+      });
+    </script>
+  </body>
+</html>
